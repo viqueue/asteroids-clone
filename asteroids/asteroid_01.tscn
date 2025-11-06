@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7xffb245bmgd"]
+
+[ext_resource type="Script" uid="uid://cb5gqy1bttbp" path="res://asteroids/astroid.gd" id="1_q6wtk"]
+[ext_resource type="Texture2D" uid="uid://bnddkxuo4akcj" path="res://assets/sprites/asteroid_01.tres" id="1_qkndi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i8nd"]
+size = Vector2(100, 104)
+
+[node name="Asteroid01" type="Area2D" groups=["asteroids"]]
+collision_layer = 2
+script = ExtResource("1_q6wtk")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("1_qkndi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_0i8nd")

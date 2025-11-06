@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6ck5tvgxunbn"]
+
+[ext_resource type="Texture2D" uid="uid://d03kj10shshky" path="res://assets/sprites/bullet_small.tres" id="1_v7oki"]
+[ext_resource type="Script" uid="uid://dxu5xx1pvsw75" path="res://bullet.gd" id="1_v8qja"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v7oki"]
+radius = 4.0
+
+[node name="Bullet" type="CharacterBody2D" groups=["bullets"]]
+script = ExtResource("1_v8qja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v7oki")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v7oki")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

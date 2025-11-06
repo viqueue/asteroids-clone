@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dla0sl5vro1lj"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_eai3k"]
+load_path = "res://.godot/imported/asteroids-2x.png-984d7ca9b5cb30a8f8afd42db53fa89b.ctex"
+
+[resource]
+atlas = SubResource("CompressedTexture2D_eai3k")
+region = Rect2(320, 0, 160, 160)

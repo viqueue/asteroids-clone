@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfffn6rftipl8"]
+
+[ext_resource type="Texture2D" uid="uid://d03kj10shshky" path="res://assets/sprites/bullet_small.tres" id="1_regki"]
+[ext_resource type="Script" uid="uid://dhqiunjvoo03s" path="res://explosion_particles.gd" id="2_xhyia"]
+[ext_resource type="AudioStream" uid="uid://ccfeydqfygie" path="res://assets/sfx/bangLarge.wav" id="3_im78l"]
+
+[sub_resource type="Curve" id="Curve_tr7be"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.4044944), 0.0, 0.0, 0, 0, Vector2(1, 0.24719107), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_regki"]
+curve = SubResource("Curve_tr7be")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xhyia"]
+lifetime_randomness = 0.7
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 120.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_regki")
+
+[node name="CPUParticles2D" type="GPUParticles2D"]
+emitting = false
+amount = 35
+texture = ExtResource("1_regki")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_xhyia")
+script = ExtResource("2_xhyia")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="ExplodeAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_im78l")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

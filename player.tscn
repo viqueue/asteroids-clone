@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://iole7bn7ybqq"]
+
+[ext_resource type="Texture2D" uid="uid://bp4ds1fycg7ev" path="res://assets/sprites/ship.tres" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://w8rp0m62g4k4" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://dfffn6rftipl8" path="res://explosion_particles.tscn" id="2_2hs0m"]
+[ext_resource type="AudioStream" uid="uid://qy6pruq5j3u6" path="res://assets/sfx/thrust.wav" id="3_hqtel"]
+[ext_resource type="AudioStream" uid="uid://cvugjtmj8y3po" path="res://assets/sfx/fire.wav" id="4_sweqy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqtel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onrkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3pqv")
+}],
+"loop": true,
+"name": &"thrust",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
+size = Vector2(50, 28)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 0
+script = ExtResource("1_onrkg")
+explosion_particle_scn = ExtResource("2_2hs0m")
+
+[node name="Visual" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual"]
+position = Vector2(0, 2)
+sprite_frames = SubResource("SpriteFrames_hqtel")
+animation = &"thrust"
+
+[node name="GunPosition" type="Node2D" parent="."]
+position = Vector2(34, -0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 0)
+shape = SubResource("RectangleShape2D_hqtel")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="ThrustAudioStreamPlayer" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_hqtel")
+volume_db = -3.0
+autoplay = true
+
+[node name="ShootAudioStreamPlayer" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_sweqy")
+volume_db = -5.0
