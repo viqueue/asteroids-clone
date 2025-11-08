@@ -8,6 +8,7 @@ size = Vector2(100, 104)
 
 [node name="Asteroid01" type="Area2D" groups=["asteroids"]]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_q6wtk")
 
 [node name="Visuals" type="Node2D" parent="."]

@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="asteroids"
-run/main_scene="uid://btl0otxtx6dxq"
+run/main_scene="uid://bw5eov4qe10ly"
 config/features=PackedStringArray("4.5", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [display]

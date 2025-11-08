@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy82x267w6s7q"]
-
-[ext_resource type="Texture2D" uid="uid://dla0sl5vro1lj" path="res://assets/sprites/asteroid_03.tres" id="1_gsv8v"]
-
-[node name="SpriteEditor-DeleteLater" type="Sprite2D"]
-texture = ExtResource("1_gsv8v")

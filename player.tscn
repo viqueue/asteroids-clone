@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://iole7bn7ybqq"]
+[gd_scene load_steps=11 format=3 uid="uid://iole7bn7ybqq"]
 
 [ext_resource type="Texture2D" uid="uid://bp4ds1fycg7ev" path="res://assets/sprites/ship.tres" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://w8rp0m62g4k4" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dfffn6rftipl8" path="res://explosion_particles.tscn" id="2_2hs0m"]
 [ext_resource type="AudioStream" uid="uid://qy6pruq5j3u6" path="res://assets/sfx/thrust.wav" id="3_hqtel"]
 [ext_resource type="AudioStream" uid="uid://cvugjtmj8y3po" path="res://assets/sfx/fire.wav" id="4_sweqy"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sweqy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
 atlas = ExtResource("1_4flbx")
@@ -41,6 +43,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual"]
+material = SubResource("CanvasItemMaterial_sweqy")
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_hqtel")
 animation = &"thrust"

@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfffn6rftipl8"]
+[gd_scene load_steps=9 format=3 uid="uid://dfffn6rftipl8"]
 
 [ext_resource type="Texture2D" uid="uid://d03kj10shshky" path="res://assets/sprites/bullet_small.tres" id="1_regki"]
 [ext_resource type="Script" uid="uid://dhqiunjvoo03s" path="res://explosion_particles.gd" id="2_xhyia"]
+[ext_resource type="AudioStream" uid="uid://bn8lab4pvfcvs" path="res://assets/sfx/bangSmall.wav" id="3_4l5wq"]
 [ext_resource type="AudioStream" uid="uid://ccfeydqfygie" path="res://assets/sfx/bangLarge.wav" id="3_im78l"]
+[ext_resource type="AudioStream" uid="uid://0twiq8oge8ut" path="res://assets/sfx/bangMedium.wav" id="4_3gfqr"]
 
 [sub_resource type="Curve" id="Curve_tr7be"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.4044944), 0.0, 0.0, 0, 0, Vector2(1, 0.24719107), 0.0, 0.0, 0, 0]
@@ -34,7 +36,16 @@ script = ExtResource("2_xhyia")
 one_shot = true
 autostart = true
 
-[node name="ExplodeAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="ExplodeAudioStreamPlayerSmall" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4l5wq")
+volume_db = -3.0
+
+[node name="ExplodeAudioStreamPlayerMedium" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3gfqr")
+volume_db = -3.0
+
+[node name="ExplodeAudioStreamPlayerLarge" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_im78l")
+volume_db = -3.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
