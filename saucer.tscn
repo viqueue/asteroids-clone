@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbmxglrxlytao"]
+
+[ext_resource type="Script" uid="uid://uncu5j7hoawp" path="res://saucer.gd" id="1_drrb8"]
+[ext_resource type="Texture2D" uid="uid://cbrjxac6tgdfp" path="res://assets/sprites/saucer.tres" id="2_ufafv"]
+[ext_resource type="AudioStream" uid="uid://b1b6ilrwawse6" path="res://assets/sfx/saucerBig.wav" id="3_ufafv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ufafv"]
+radius = 30.066593
+
+[node name="Saucer" type="Area2D"]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_drrb8")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ufafv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[node name="AudioStreamPlayerDefault" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ufafv")
+volume_db = -10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ufafv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
